@@ -1,0 +1,4 @@
+export PATH="$HOME/.linuxbrew/bin:$PATH"
+export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+export XDG_DATA_DIRS="$XDG_DATA_DIRS:/home/emdb/.linuxbrew/share"

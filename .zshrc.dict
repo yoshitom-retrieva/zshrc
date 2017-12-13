@@ -1,0 +1,13 @@
+# Last Change:30-Jun-2017.
+# This for local dictionary.
+
+# 辞書を引く(英和)
+function ejdict() {
+  grep "^$1" /usr/share/dict/e2j_EJDIC/ejdic-hand-txt/ejdic-hand-utf8.txt -E -wi --color=always | less -R -FX
+}
+
+
+# 辞書を引く(和英)
+function jedict() {
+  grep "^$1" /usr/share/dict/j2e_edict/edict -E -wi --color=always | less -R -FX
+}

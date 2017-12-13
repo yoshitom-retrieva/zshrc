@@ -1,0 +1,7 @@
+# Last Change:06-Jul-2016.
+# This for rbenv configuration.
+ 
+if [ -e $HOME/.rbenv  ]; then
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+fi
