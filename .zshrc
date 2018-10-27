@@ -90,6 +90,16 @@ local ONOFF_DEF=$'%{\e[05;m%}'
 local REVERSAL_DEF=$'%{\e[07;m%}'
 local DISAPPER_DEF=$'%{\e[08;m%}'
 
+# for git
+# https://qiita.com/zaapainfoz/items/355cd4d884ce03656285
+# http://tkengo.github.io/blog/2013/05/12/zsh-vcs-info/
+autoload -Uz vcs_info
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{yellow}need commit"
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}need add"
+zstyle ':vcs_info:*' formats '%F{green}%c%u[%b]%f'
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+
 case ${UID} in
 0)
 #    PROMPT="%B%{[35m%}%/#%{[m%}%b "
@@ -104,8 +114,8 @@ case ${UID} in
 *)
 #		PROMPT="%{[33m%} %m%% [m%}"
 #		PROMPT="%{$prompt_color%}[%n@%m:%d]%#%{$reset_color%} "
-		PROMPT="
-${Red}Insert ${Cyaan}[%~%50(l.	.)]${DEFAULT}
+    vcs_info
+		PROMPT="${Red}Insert ${Cyaan}[%~%50(l.	.)]${DEFAULT} ${vcs_info_msg_0_}
 ${Yellow}%n@%m%# ${DEFAULT}"
     PROMPT2="%{[31m%}%_%%%{[m%} "
 #		RPROMPT="%{$Yellow%}[%~%50(l.
@@ -122,15 +132,14 @@ function  zle-keymap-select zle-line-init zle-line-finish {
 	case $KEYMAP in
 		vicmd)
 		# PROMPT="\n%{$Blue%}Normal %{$Cyaan%}[%~%50(l.	.)]%{$DEFAULT%}\n%{$Yellow%}%n@%m%# %{$DEFAULT%}"
-		PROMPT="
-${Blue}Normal ${Cyaan}[%~%50(l.	.)]${DEFAULT}
+		PROMPT="${Blue}Normal ${Cyaan}[%~%50(l.	.)]${DEFAULT}
 ${Yellow}%n@%m%# ${DEFAULT}"
 			;;
 		main|viins)
 		# PROMPT=$'\n%{\e[31m%}Insert %{$Cyaan%}[%~%50(l.	.)]%{$DEFAULT%}'$'\n'%{$Yellow%}%n@%m%# %{$DEFAULT%}
 		# PROMPT=$'\n'"%{${Red}%}Insert %{$Cyaan%}[%~%50(l.	.)]%{$DEFAULT%}"$'\n'"%{$Yellow%}%n@%m%# %{$DEFAULT%}"
-		PROMPT="
-${Red}Insert ${Cyaan}[%~%50(l.	.)]${DEFAULT}
+    vcs_info
+		PROMPT="${Red}Insert ${Cyaan}[%~%50(l.	.)]${DEFAULT} ${vcs_info_msg_0_}
 ${Yellow}%n@%m%# ${DEFAULT}"
 			;;
 	esac
@@ -174,7 +183,7 @@ linux*)
 	#source ~/Dropbox/LocalizingFile/.ubuntu_zshrc
 	source ~/.zshrcs/.zshrc.linux
 	function chpwd() {ls -a --color}
-	alias open='/usr/bin/gnome-open'
+	# alias open='/usr/bin/gnome-open'
 	;;
 esac
 
@@ -198,3 +207,5 @@ done
 
 export EDITOR="/home/emdb/local/bin/vim"
 setopt print_eight_bit
+export PIPENV_VENV_IN_PROJECT=true
+
