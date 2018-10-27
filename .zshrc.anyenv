@@ -1,0 +1,31 @@
+# Last Change:14-Sep-2018.
+#
+#
+# install anyenv
+# ```sh
+# git clone https://github.com/riywo/anyenv ~/.anyenv
+# echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> ~/.zshrcs/.zshrc.anyenv
+# echo 'eval "$(anyenv init -)"' >> ~/.zshrcs/.zshrc.anyenv
+# ```
+#
+# install anyenv-update plugin
+# ```sh
+# mkdir -p $(anyenv root)/plugins
+# git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
+# ```
+# https://qiita.com/kazuya-s@github/items/8cb41a02175e629350ba
+# https://github.com/riywo/anyenv
+#
+# how to use pyenv
+# ```sh
+# anyenv install pyenv
+# exec $SHELL -l
+# ```
+#
+# how to use pyenv-virtualenv
+# ```sh
+# git clone https://github.com/yyuu/pyenv-virtualenv ~/.anyenv/envs/pyenv/plugins/pyenv-virtualenv
+# ```
+
+export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init -)"
