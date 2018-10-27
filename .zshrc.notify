@@ -99,3 +99,13 @@ if which growlnotify >/dev/null 2>&1 ||
     add-zsh-hook preexec __my_preexec_start_timetrack
     add-zsh-hook precmd __my_preexec_end_timetrack
 fi
+
+exec_and_notify()
+{
+  eval "$*"
+  notify-send -u normal "finish info" "program is over" --icon=utilities-terminal
+}
+notify_when_finished()
+{
+  notify-send -u normal "finish info" "program is over" --icon=utilities-terminal
+}
