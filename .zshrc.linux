@@ -2,9 +2,11 @@ alias ls='ls -A --color=auto'
 alias ll='ls -lAh --color=auto'
 alias lt='ls -lAhT --color=auto'
 alias lilith='wine ~/.wine/drive_c/Program\ Files/Project9k/Sound\ Player\ Lilith\ 0.991b/Lilith.exe'
+alias open='gio open'
 #eval `dircolors ~/Dropbox/LocalizingFile/.EB8540wLsColors`
 
 export PATH=~/local/bin:$PATH
+export PATH=${PATH}:/sbin
 
 # #for cuda
 # export PATH=/usr/local/cuda/bin/:$PATH
