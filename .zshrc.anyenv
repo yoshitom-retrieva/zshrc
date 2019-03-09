@@ -1,4 +1,4 @@
-# Last Change:14-Sep-2018.
+# Last Change:2019/03/09.
 #
 #
 # install anyenv
@@ -28,4 +28,4 @@
 # ```
 
 export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init -)"
+eval "$(anyenv init - zsh)"
