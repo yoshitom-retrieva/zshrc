@@ -1,0 +1,3 @@
+setopt print_eight_bit
+alias ldd="echo ldd is not on OSX. use otool -L."
+alias strace="echo strace is not on OSX. use dtruss"

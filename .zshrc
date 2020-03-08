@@ -1,6 +1,8 @@
 autoload -U compinit
 compinit
 export LANG=ja_JP.UTF-8
+# export LANGUAGE=${LANG}
+# export LC_ALL=${LANG}
 
 bindkey -v
 
@@ -177,13 +179,18 @@ darwin*)
     if [ -e ~/selfcompile/.zshrc.local ];then
         source ~/selfcompile/.zshrc.local
     fi
+    alias ls="ls -AG"
+    alias ll="ls -AGl"
+    alias vim=~/local/bin/vim
+    alias vimdiff=~/local/bin/vimdiff
 	;;
 linux*)
 	#echo "linux mokyu"
 	#source ~/Dropbox/LocalizingFile/.ubuntu_zshrc
-	source ~/.zshrcs/.zshrc.linux
+	# source ~/zshrcs/.zshrc_.linux
 	function chpwd() {ls -a --color}
 	# alias open='/usr/bin/gnome-open'
+  export EDITOR="${HOME}/local/bin/vim"
 	;;
 esac
 
@@ -192,20 +199,26 @@ esac
 #for selfcompile
 export PATH=~/selfcompile/bin:$PATH
 export PATH=~/selfcompile/bin/msrutil:$PATH
-#alias python2="/opt/local/bin/python2.7"
-#alias python3="/opt/local/bin/python3.3"
 
-if [[ $(uname) = "Darwin" ]]; then
-    alias ldd="echo ldd is not on OSX. use otool -L."
-    alias strace="echo strace is not on OSX. use dtruss"
-fi
+(){
+  local BasePath="${HOME}/repos/private/zshrcs"
+  # source ~/.zshrcs/.zshrc*
+  for ZSHRC in $( ls -A ${BasePath}/.zshrc.common.* | grep -vE "sw.$"); do
+      source $ZSHRC
+  done
+  if [[ $(uname) = "Darwin" ]]; then
+      for ZSHRC in $( ls -A ${BasePath}/.zshrc.mac.* | grep -vE "sw.$"); do
+          source $ZSHRC
+      done
+  elif [[ $(uname -r | grep -i microsoft) ]]; then
+      for ZSHRC in $( ls -A ${BasePath}/.zshrc.win.* | grep -vE "sw.$"); do
+          source $ZSHRC
+      done
+  else
+      for ZSHRC in $( ls -A ${BasePath}/.zshrc.linux.* | grep -vE "sw.$"); do
+          source $ZSHRC
+      done
+  fi
+}
 
-# source ~/.zshrcs/.zshrc*
-for ZSHRC in $( ls -A ~/.zshrcs/.zshrc.* | grep -vE "sw.$"); do
-    source $ZSHRC
-done
-
-export EDITOR="/home/emdb/local/bin/vim"
-setopt print_eight_bit
 export PIPENV_VENV_IN_PROJECT=true
-
