@@ -1,9 +1,14 @@
-
+CacheFile=/tmp/grep_cache.txt
 # https://qiita.com/akameco/items/fe801449e5cd435f6851
 grep_peco_vim (){
     # vim $(grep -n $@ | peco | awk -F: '{print "+"$2,$1}')
-    grep -n $@ | peco | awk -F: '{print "+"$2,$1}' | xargs -o vim
+    grep -n $@ | tee ${CacheFile} | peco | awk -F: '{print "+"$2,$1}' | xargs -o vim
 }
+
+cache_grep_peco_vim (){
+  cat ${CacheFile} | peco  | awk -F: '{print "+"$2,$1}' | xargs -o vim
+}
+
 # https://qiita.com/tmsanrinsha/items/72cebab6cd448704e366
 peco_vim () {
     # HOGE=$(cat - | peco)
