@@ -1,0 +1,23 @@
+
+# https://qiita.com/akameco/items/fe801449e5cd435f6851
+grep_peco_vim (){
+    # vim $(grep -n $@ | peco | awk -F: '{print "+"$2,$1}')
+    grep -n $@ | peco | awk -F: '{print "+"$2,$1}' | xargs -o vim
+}
+# https://qiita.com/tmsanrinsha/items/72cebab6cd448704e366
+peco_vim () {
+    # HOGE=$(cat - | peco)
+    # vim $( echo ${HOGE} )
+    # https://qastack.jp/vi/410/terminal-borked-after-invoking-vim-with-xargs
+   cat - | peco | xargs -o vim
+}
+
+# grep-peco-vim () {
+#     # P=$(grep -n $@ |peco |awk -F: '{print "+"$2" "$1}')
+#     # if [ ${#P} -ne 0 ];then
+#     #     echo ${P}
+#     #     ${EDITOR} ${P}
+#     # fi
+#     # grep -n $@ |peco |awk -F: '{print "+"$2" "$1}' | vim -
+# }
+#
