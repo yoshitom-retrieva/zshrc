@@ -181,8 +181,8 @@ darwin*)
     fi
     alias ls="ls -AG"
     alias ll="ls -AGl"
-    alias vim=~/local/bin/vim
-    alias vimdiff=~/local/bin/vimdiff
+    #alias vim=~/local/bin/vim
+    #alias vimdiff=~/local/bin/vimdiff
 	;;
 linux*)
 	#echo "linux mokyu"
