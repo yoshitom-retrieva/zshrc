@@ -1,7 +1,15 @@
 umask 022
-export DISPLAY=localhost:0
+export DISPLAY=$(ipconfig.exe | grep -A5 WSL | grep IPv4 | cut -d: -f2 | tr -d "\r\n" | sed 's@ @@g'):0
 
 junction()
 {
   pwsh.exe -Command "New-Item  -ItemType Junction -Name $2 -Value $1 "
+}
+
+wcd(){
+    cd $(wslpath $(powershell.exe -command 'Get-Clipboard') | tr -d '\r')
+}
+
+pbpaste(){
+    echo "$(powershell.exe -command 'Get-Clipboard')"
 }
