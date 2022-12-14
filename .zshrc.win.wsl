@@ -13,3 +13,8 @@ wcd(){
 pbpaste(){
     echo "$(powershell.exe -command 'Get-Clipboard')"
 }
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export DefaultIMModule=fcitx
+fcitx-autostart &> /dev/null
