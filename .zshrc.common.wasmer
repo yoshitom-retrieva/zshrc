@@ -1,0 +1,5 @@
+# Wasmer
+export WASMER_DIR="${HOME}/.wasmer"
+if [ -d ${WASMER_DIR} ]; then
+    [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+fi
