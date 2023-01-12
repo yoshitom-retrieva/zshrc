@@ -1,0 +1,7 @@
+function start_vpn() {
+    rasdial.exe bionet_dynamic bionet bionet9021
+}
+
+function stop_vpn() {
+    rasdial.exe bionet_dynamic /disconnect
+}
