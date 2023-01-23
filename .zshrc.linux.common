@@ -31,3 +31,7 @@ export MANPATH=${MANPATH}:~/local/share/man
 # export LD_LIBRARY_PATH=/home/yoshitom/selfcompile/source/libcxxrt/build/lib:/home/yoshitom/selfcompile/source/libcxxabi/lib:/home/yoshitom/selfcompile/lib:$LD_LIBRARY_PATH
 # export LIBRARY_PATH=/home/yoshitom/selfcompile/source/libcxxrt/build/lib:/home/yoshitom/selfcompile/source/libcxxabi/lib:/home/yoshitom/selfcompile/lib:$LIBRARY_PATH
 # #export CPLUS_INCLUDE_PATH=~/selfcompile/include/c++/v1/:$CPLUS_INCLUDE_PATH
+
+change_homedirectory_language(){
+    LANG=C xdg-user-dirs-gtk-update
+}

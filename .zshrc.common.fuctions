@@ -25,4 +25,15 @@ peco_vim () {
 #     # fi
 #     # grep -n $@ |peco |awk -F: '{print "+"$2" "$1}' | vim -
 # }
-#
+
+do_as_england(){
+    LC_ALL=en_UK.UTF-8 $*
+}
+
+is_wsl(){
+    if [ $(uname -a | grep -i wsl | wc -c) -gt 0 ]; then
+        return true
+    else
+        return false
+    fi
+}
