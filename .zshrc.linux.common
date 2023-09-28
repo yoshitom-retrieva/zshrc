@@ -9,6 +9,13 @@ export PATH=~/local/bin:$PATH
 export PATH=${PATH}:/sbin
 export MANPATH=${MANPATH}:~/local/share/man
 
+# https://kazuhira-r.hatenablog.com/entry/2023/01/05/235018
+REMOTE_IP=$(echo $SSH_CONNECTION | awk '{print $1}')
+REMOTE_IP=${REMOTE_IP:-no_ssh}
+if [ ${REMOTE_IP} != "no_ssh" ]; then
+    export DISPLAY="$(echo $SSH_CONNECTION | awk '{print $1}'):0.0"
+fi
+
 # #for cuda
 # export PATH=/usr/local/cuda/bin/:$PATH
 # export MANPATH=/usr/local/cuda/man/:$MANPATH
