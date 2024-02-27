@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+# Last Change:
+
+RustEnvFilePath="$HOME/.cargo/env"
+if [ -e ${RustEnvFilePath} ]; then
+    source ${RustEnvFilePath}
+fi
