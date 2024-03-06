@@ -1,0 +1,6 @@
+# Last Change:2024/03/06.
+#
+NVIM_PATH=$(find ~/local -name "nvim" | grep bin | head -n1)
+if ${NVIM_PATH} /= ""; then
+    alias nvim=${NVIM_PATH}
+fi
