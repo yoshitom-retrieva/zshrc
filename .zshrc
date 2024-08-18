@@ -203,9 +203,6 @@ export PATH=~/selfcompile/bin/msrutil:$PATH
 (){
   local BasePath="${HOME}/repos/private/zshrcs"
   # source ~/.zshrcs/.zshrc*
-  for ZSHRC in $( ls -A ${BasePath}/.zshrc.common.* | grep -vE "sw.$"); do
-      source $ZSHRC
-  done
   if [[ $(uname) = "Darwin" ]]; then
       for ZSHRC in $( ls -A ${BasePath}/.zshrc.mac.* | grep -vE "sw.$"); do
           source $ZSHRC
@@ -219,6 +216,9 @@ export PATH=~/selfcompile/bin/msrutil:$PATH
           source $ZSHRC
       done
   fi
+  for ZSHRC in $( ls -A ${BasePath}/.zshrc.common.* | grep -vE "sw.$"); do
+      source $ZSHRC
+  done
 }
 
 export PIPENV_VENV_IN_PROJECT=true
