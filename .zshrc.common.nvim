@@ -1,0 +1,11 @@
+# Last Change:2024/08/19.
+
+NVIM_PATH=$(which nvim)
+if [[ ! -n ${NVIM_PATH} ]]; then
+    NVIM_PATH=$(find ~/local -name "nvim" | grep bin | head -n1)
+    echo "not exist nvim"
+    if [[ -n ${NVIM_PATH} ]]; then
+        echo "exist nvim in local"
+        # alias nvim=${NVIM_PATH}
+    fi
+fi
