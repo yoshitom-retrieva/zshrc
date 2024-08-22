@@ -2,7 +2,8 @@ umask 022
 if [[ $(which ipconfig.exe 2>/dev/null) =~ "not found" ]];then
     export PATH=${PATH}:/mnt/c/Windows/System32
 fi
-export DISPLAY=$(ipconfig.exe | grep -A5 WSL | grep -A5 Hyper | grep IPv4 | cut -d: -f2 | tr -d "\r\n" | sed 's@ @@g'):0
+#export DISPLAY=$(ipconfig.exe | grep -A5 WSL | grep -A5 Hyper | grep IPv4 | cut -d: -f2 | tr -d "\r\n" | sed 's@ @@g'):0
+export DISPLAY=:0
 
 junction()
 {
