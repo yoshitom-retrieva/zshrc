@@ -45,3 +45,7 @@ wunzip(){
 dig_mdns(){
     dig $* @224.0.0.251 -p 5353
 }
+
+hostname_tailscale(){
+    dig @100.100.100.100 +noall +answer +short -x $(tailscale ip -1)
+}
