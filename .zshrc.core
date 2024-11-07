@@ -76,100 +76,100 @@ setopt no_always_last_prompt
 # コマンドラインがどのように展開され実行されたかを表示するようになる
 #setopt xtrace
 
-# local Red=$'%{\e[31m%}'
-# local Green=$'%{\e[32m%}'
-# local Yellow=$'%{\e[00;33m%}'
-# local Blue=$'%{\e[34m%}'
-# local Purple=$'%{\e[35m%}'
-# local Cyaan=$'%{\e[36m%}'
-# local Grey=$'%{\e[37m%}'
-# local DEFAULT=$'%{\e[m%}'
-# local NOM_DEF=$'%{\e[00;m%}'
-# local BOL_DEF=$'%{\e[01;m%}'
-# local UNDERLINE_DEF=$'%{\e[04;m%}'
-# local ONOFF_DEF=$'%{\e[05;m%}'
-# local REVERSAL_DEF=$'%{\e[07;m%}'
-# local DISAPPER_DEF=$'%{\e[08;m%}'
-
-Red=$'%{\e[31m%}'
-Green=$'%{\e[32m%}'
-Yellow=$'%{\e[00;33m%}'
-Blue=$'%{\e[34m%}'
-Purple=$'%{\e[35m%}'
-Cyaan=$'%{\e[36m%}'
-Grey=$'%{\e[37m%}'
-DEFAULT=$'%{\e[m%}'
-NOM_DEF=$'%{\e[00;m%}'
-BOL_DEF=$'%{\e[01;m%}'
-UNDERLINE_DEF=$'%{\e[04;m%}'
-ONOFF_DEF=$'%{\e[05;m%}'
-REVERSAL_DEF=$'%{\e[07;m%}'
-DISAPPER_DEF=$'%{\e[08;m%}'
-
-# for git
-# https://qiita.com/zaapainfoz/items/355cd4d884ce03656285
-# http://tkengo.github.io/blog/2013/05/12/zsh-vcs-info/
-autoload -Uz vcs_info
-zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr "%F{yellow}need commit"
-zstyle ':vcs_info:git:*' unstagedstr "%F{red}need add"
-zstyle ':vcs_info:*' formats '%F{green}%c%u[%b]%f'
-zstyle ':vcs_info:*' actionformats '[%b|%a]'
-
-case ${UID} in
-0)
-#    PROMPT="%B%{[35m%}%/#%{[m%}%b "
-    PROMPT="%{$Purple%}[%n@%m]%# %{$DEFAULT%}"
-    PROMPT2="%B%{[31m%}%_#%{[m%}%b "
-    SPROMPT="%B%{[31m%}%r is correct? [n,y,a,e]:%{[m%}%b "
-    RPROMPT="[%d]"
-    if [ -n "${REMOTEHOST}${SSH_CONNECTION}" ]; then
-        PROMPT="%{[37m%}${HOST%%.*} ${PROMPT}"
-    fi
-    ;;
-*)
-#		PROMPT="%{[33m%} %m%% [m%}"
-#		PROMPT="%{$prompt_color%}[%n@%m:%d]%#%{$reset_color%} "
-    vcs_info
-		PROMPT="${Red}Insert ${Cyaan}[%~%50(l.	.)]${DEFAULT} ${vcs_info_msg_0_}
-${Yellow}%n@%m%# ${DEFAULT}"
-    PROMPT2="%{[31m%}%_%%%{[m%} "
-#		RPROMPT="%{$Yellow%}[%~%50(l.
-#			.)]%{$DEFAULT%}"
-    SPROMPT="%{[31m%}%r is correct? [n,y,a,e]:%{[m%} "
-    if [ -n "${REMOTEHOST}${SSH_CONNECTION}" ]; then
-        PROMPT="%{[37m%}${HOST%%.*} ${PROMPT}"
-    fi
-    ;;
-esac 
-# function zle-line-init zle-keymap-select {
-# function  zle-keymap-select {
-function  zle-keymap-select zle-line-init zle-line-finish {
-	case $KEYMAP in
-		vicmd)
-		# PROMPT="\n%{$Blue%}Normal %{$Cyaan%}[%~%50(l.	.)]%{$DEFAULT%}\n%{$Yellow%}%n@%m%# %{$DEFAULT%}"
-		PROMPT="${Blue}Normal ${Cyaan}[%~%50(l.	.)]${DEFAULT}
-${Yellow}%n@%m%# ${DEFAULT}"
-			;;
-		main|viins)
-		# PROMPT=$'\n%{\e[31m%}Insert %{$Cyaan%}[%~%50(l.	.)]%{$DEFAULT%}'$'\n'%{$Yellow%}%n@%m%# %{$DEFAULT%}
-		# PROMPT=$'\n'"%{${Red}%}Insert %{$Cyaan%}[%~%50(l.	.)]%{$DEFAULT%}"$'\n'"%{$Yellow%}%n@%m%# %{$DEFAULT%}"
-    vcs_info
-		PROMPT="${Red}Insert ${Cyaan}[%~%50(l.	.)]${DEFAULT} ${vcs_info_msg_0_}
-${Yellow}%n@%m%# ${DEFAULT}"
-			;;
-	esac
-	zle reset-prompt
-}
-zle -N zle-line-init
-zle -N zle-line-finish
-zle -N zle-keymap-select
-zle -N edit-command-line
-# http://qiita.com/b4b4r07/items/8db0257d2e6f6b19ecb9
-if ! [ "$TMUX" = "" ]; then
-    tmux set-option status-bg $(perl -MList::Util=sum -e'print+(red,green,blue,yellow,cyan,magenta,white)[sum(unpack"C*",shift)%7]' $(hostname)) | cat > /dev/null
-fi
-#http://d.hatena.ne.jp/sugyan/20120302/1330699507
+# # local Red=$'%{\e[31m%}'
+# # local Green=$'%{\e[32m%}'
+# # local Yellow=$'%{\e[00;33m%}'
+# # local Blue=$'%{\e[34m%}'
+# # local Purple=$'%{\e[35m%}'
+# # local Cyaan=$'%{\e[36m%}'
+# # local Grey=$'%{\e[37m%}'
+# # local DEFAULT=$'%{\e[m%}'
+# # local NOM_DEF=$'%{\e[00;m%}'
+# # local BOL_DEF=$'%{\e[01;m%}'
+# # local UNDERLINE_DEF=$'%{\e[04;m%}'
+# # local ONOFF_DEF=$'%{\e[05;m%}'
+# # local REVERSAL_DEF=$'%{\e[07;m%}'
+# # local DISAPPER_DEF=$'%{\e[08;m%}'
+#
+# Red=$'%{\e[31m%}'
+# Green=$'%{\e[32m%}'
+# Yellow=$'%{\e[00;33m%}'
+# Blue=$'%{\e[34m%}'
+# Purple=$'%{\e[35m%}'
+# Cyaan=$'%{\e[36m%}'
+# Grey=$'%{\e[37m%}'
+# DEFAULT=$'%{\e[m%}'
+# NOM_DEF=$'%{\e[00;m%}'
+# BOL_DEF=$'%{\e[01;m%}'
+# UNDERLINE_DEF=$'%{\e[04;m%}'
+# ONOFF_DEF=$'%{\e[05;m%}'
+# REVERSAL_DEF=$'%{\e[07;m%}'
+# DISAPPER_DEF=$'%{\e[08;m%}'
+#
+# # for git
+# # https://qiita.com/zaapainfoz/items/355cd4d884ce03656285
+# # http://tkengo.github.io/blog/2013/05/12/zsh-vcs-info/
+# autoload -Uz vcs_info
+# zstyle ':vcs_info:git:*' check-for-changes true
+# zstyle ':vcs_info:git:*' stagedstr "%F{yellow}need commit"
+# zstyle ':vcs_info:git:*' unstagedstr "%F{red}need add"
+# zstyle ':vcs_info:*' formats '%F{green}%c%u[%b]%f'
+# zstyle ':vcs_info:*' actionformats '[%b|%a]'
+#
+# case ${UID} in
+# 0)
+# #    PROMPT="%B%{[35m%}%/#%{[m%}%b "
+#     PROMPT="%{$Purple%}[%n@%m]%# %{$DEFAULT%}"
+#     PROMPT2="%B%{[31m%}%_#%{[m%}%b "
+#     SPROMPT="%B%{[31m%}%r is correct? [n,y,a,e]:%{[m%}%b "
+#     RPROMPT="[%d]"
+#     if [ -n "${REMOTEHOST}${SSH_CONNECTION}" ]; then
+#         PROMPT="%{[37m%}${HOST%%.*} ${PROMPT}"
+#     fi
+#     ;;
+# *)
+# #		PROMPT="%{[33m%} %m%% [m%}"
+# #		PROMPT="%{$prompt_color%}[%n@%m:%d]%#%{$reset_color%} "
+#     vcs_info
+# 		PROMPT="${Red}Insert ${Cyaan}[%~%50(l.	.)]${DEFAULT} ${vcs_info_msg_0_}
+# ${Yellow}%n@%m%# ${DEFAULT}"
+#     PROMPT2="%{[31m%}%_%%%{[m%} "
+# #		RPROMPT="%{$Yellow%}[%~%50(l.
+# #			.)]%{$DEFAULT%}"
+#     SPROMPT="%{[31m%}%r is correct? [n,y,a,e]:%{[m%} "
+#     if [ -n "${REMOTEHOST}${SSH_CONNECTION}" ]; then
+#         PROMPT="%{[37m%}${HOST%%.*} ${PROMPT}"
+#     fi
+#     ;;
+# esac 
+# # function zle-line-init zle-keymap-select {
+# # function  zle-keymap-select {
+# function  zle-keymap-select zle-line-init zle-line-finish {
+# 	case $KEYMAP in
+# 		vicmd)
+# 		# PROMPT="\n%{$Blue%}Normal %{$Cyaan%}[%~%50(l.	.)]%{$DEFAULT%}\n%{$Yellow%}%n@%m%# %{$DEFAULT%}"
+# 		PROMPT="${Blue}Normal ${Cyaan}[%~%50(l.	.)]${DEFAULT}
+# ${Yellow}%n@%m%# ${DEFAULT}"
+# 			;;
+# 		main|viins)
+# 		# PROMPT=$'\n%{\e[31m%}Insert %{$Cyaan%}[%~%50(l.	.)]%{$DEFAULT%}'$'\n'%{$Yellow%}%n@%m%# %{$DEFAULT%}
+# 		# PROMPT=$'\n'"%{${Red}%}Insert %{$Cyaan%}[%~%50(l.	.)]%{$DEFAULT%}"$'\n'"%{$Yellow%}%n@%m%# %{$DEFAULT%}"
+#     vcs_info
+# 		PROMPT="${Red}Insert ${Cyaan}[%~%50(l.	.)]${DEFAULT} ${vcs_info_msg_0_}
+# ${Yellow}%n@%m%# ${DEFAULT}"
+# 			;;
+# 	esac
+# 	zle reset-prompt
+# }
+# zle -N zle-line-init
+# zle -N zle-line-finish
+# zle -N zle-keymap-select
+# zle -N edit-command-line
+# # http://qiita.com/b4b4r07/items/8db0257d2e6f6b19ecb9
+# if ! [ "$TMUX" = "" ]; then
+#     tmux set-option status-bg $(perl -MList::Util=sum -e'print+(red,green,blue,yellow,cyan,magenta,white)[sum(unpack"C*",shift)%7]' $(hostname)) | cat > /dev/null
+# fi
+# #http://d.hatena.ne.jp/sugyan/20120302/1330699507
 
 # ビープ音を消す
 #setopt no_beep
@@ -199,3 +199,4 @@ linux*)
 esac
 
 #http://dadeba.github.com/blog/2012/03/10/note-on-opencl-sdks/
+
