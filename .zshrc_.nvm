@@ -1,5 +1,0 @@
-export NVM_DIR="$HOME/.nvm"
-if [ -e ${NVM_DIR}  ]; then
-  . "$(brew --prefix nvm)/nvm.sh"
-fi
-

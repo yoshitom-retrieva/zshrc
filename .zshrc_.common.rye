@@ -1,7 +1,0 @@
-#!/usr/bin/env zsh
-# Last Change:
-
-RyeEnvFilePath=$HOME/.rye/env
-if [ -e ${RyeEnvFilePath} ]; then
-    source ${RyeEnvFilePath}
-fi
