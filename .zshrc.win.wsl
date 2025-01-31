@@ -7,7 +7,15 @@ export DISPLAY=:0
 
 junction()
 {
-  pwsh.exe -Command "New-Item  -ItemType Junction -Name $2 -Value $1 "
+  origin_l=$1
+  origin_w=$(wslpath -w $origin_l)
+  linked_l=$2
+  linked_w=$(wslpath -w $linked_l)
+  basename=$(basename $origin_l)
+  if [ -d $linked_l ];then
+      linked_w=$(wslpath -w ${linked_l}/${basename})
+  fi
+  pwsh.exe -Command "New-Item  -ItemType Junction -Path '${linked_w}' -Target '${origin_w}' "
 }
 
 wcd(){
