@@ -42,3 +42,6 @@ fi
 change_homedirectory_language(){
     LANG=C xdg-user-dirs-gtk-update
 }
+
+# for uv
+export PATH=$PATH:$HOME/.local/bin
