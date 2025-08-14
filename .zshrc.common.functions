@@ -49,3 +49,26 @@ dig_mdns(){
 hostname_tailscale(){
     dig @100.100.100.100 +noall +answer +short -x $(tailscale ip -1)
 }
+
+init_aier_sh(){
+    mkdir -p bin
+    if [ -f "bin/start_aider.sh" ]; then
+        echo "bin/start_aider.sh が既に存在するため、スクリプトを終了します。"
+        return 1
+    fi
+    cat << 'EOF' > bin/start_aider.sh
+#!/bin/bash -eu 
+# Last Change:2025/08/13. 
+
+ScriptDir="$(dirname "${BASH_SOURCE[0]}")" 
+ScriptDir="$(realpath "${ScriptDir}")" 
+cd ${ScriptDir}/../ 
+
+# export OLLAMA_API_BASE=https://ollama-bn-tailscale.mermaid-locrian.ts.net 
+# uvx --from aider-chat aider --model ollama_chat/gemma3:27b --weak-model ollama_chat/gemma3:27b -v --no-auto-commits 
+
+export OLLAMA_API_BASE=https://ollama-tailscale-evo-x2.mermaid-locrian.ts.net 
+uvx --from aider-chat aider --model ollama_chat/gpt-oss:120b --weak-model ollama_chat/gpt-oss:120b -v --no-auto-commits 
+EOF
+    chmod u+x bin/start_aider.sh
+}
