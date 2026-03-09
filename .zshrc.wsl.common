@@ -1,3 +1,24 @@
+#https://qiita.com/nisaji/items/f9eede2164a74bc08db7
+#for no match with regular expression
+setopt +o nomatch
+
+# no display registory
+# https://takuya-1st.hatenablog.jp/entry/2014/05/23/045013
+alias ls='ls -A --color=auto --ignore={NTUSER*,ntuser*}'
+alias ll='ls -lAh --color=auto'
+alias lt='ls -lAhT --color=auto'
+# alias lilith='wine ~/.wine/drive_c/Program\ Files/Project9k/Sound\ Player\ Lilith\ 0.991b/Lilith.exe'
+alias open='gio open'
+#eval `dircolors ~/Dropbox/LocalizingFile/.EB8540wLsColors`
+
+export PATH=~/local/bin:$PATH
+export PATH=${PATH}:/sbin
+export MANPATH=${MANPATH}:~/local/share/man
+
+nkf_utf8bom(){
+    nkf --overwrite --oc=UTF-8-BOM $*
+}
+
 umask 022
 if [[ $(which ipconfig.exe 2>/dev/null) =~ "not found" ]];then
     export PATH=${PATH}:/mnt/c/Windows/System32

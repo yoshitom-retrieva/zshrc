@@ -7,8 +7,11 @@
       for ZSHRC in $( ls -A ${BasePath}/.zshrc.mac.* | grep -vE "sw.$"); do
           source $ZSHRC
       done
-  elif [[ $(uname -r | grep -i microsoft) ]]; then
-      for ZSHRC in $( ls -A ${BasePath}/.zshrc.win.* | grep -vE "sw.$"); do
+  elif [[ $(uname -r | grep -i WSL) ]]; then
+      for ZSHRC in $( ls -A ${BasePath}/.zshrc.linux.* | grep -vE "sw.$"); do
+          source $ZSHRC
+      done
+      for ZSHRC in $( ls -A ${BasePath}/.zshrc.wsl.* | grep -vE "sw.$"); do
           source $ZSHRC
       done
   else
