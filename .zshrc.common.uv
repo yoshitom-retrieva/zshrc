@@ -1,0 +1,8 @@
+
+# for uv
+# if [ -e $HOME/.local/bin ];then
+if command -v uv &> /dev/null; then
+  export PATH=$PATH:$HOME/.local/bin
+  . "$HOME/.local/bin/env"
+fi
+

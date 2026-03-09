@@ -1,9 +1,7 @@
 alias ls='ls -A --color=auto'
 alias ll='ls -lAh --color=auto'
 alias lt='ls -lAhT --color=auto'
-alias lilith='wine ~/.wine/drive_c/Program\ Files/Project9k/Sound\ Player\ Lilith\ 0.991b/Lilith.exe'
 alias open='gio open'
-#eval `dircolors ~/Dropbox/LocalizingFile/.EB8540wLsColors`
 
 export PATH=~/local/bin:$PATH
 export PATH=${PATH}:/sbin
@@ -29,19 +27,8 @@ fi
 # export CPLUS_INCLUDE_PATH=~/Dropbox/include/OpenCL/:$CPLUS_INCLUDE_PATH
 # export CPLUS_INCLUDE_PATH=~/Dropbox/lib/CL/:$CPLUS_INCLUDE_PATH
 #
-# #if [ -e ~/.Xmodmap ]
-# #then
-# #	xmodmap ~/.Xmodmap
-# #fi
-#
-# #for llvm clang
-# export LD_LIBRARY_PATH=/home/yoshitom/selfcompile/source/libcxxrt/build/lib:/home/yoshitom/selfcompile/source/libcxxabi/lib:/home/yoshitom/selfcompile/lib:$LD_LIBRARY_PATH
-# export LIBRARY_PATH=/home/yoshitom/selfcompile/source/libcxxrt/build/lib:/home/yoshitom/selfcompile/source/libcxxabi/lib:/home/yoshitom/selfcompile/lib:$LIBRARY_PATH
-# #export CPLUS_INCLUDE_PATH=~/selfcompile/include/c++/v1/:$CPLUS_INCLUDE_PATH
 
 change_homedirectory_language(){
     LANG=C xdg-user-dirs-gtk-update
 }
 
-# for uv
-export PATH=$PATH:$HOME/.local/bin
