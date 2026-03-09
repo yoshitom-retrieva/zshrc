@@ -1,0 +1,6 @@
+
+# export PATH=$PATH:/usr/local/cuda-12.8/bin
+CUDA_BIN_PATH=/usr/local/cuda/bin
+if [ -z ${CUDA_BIN_PATH} ];then
+    export PATH=$PATH:${CUDA_BIN_PATH}
+fi
