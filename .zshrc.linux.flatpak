@@ -1,0 +1,6 @@
+
+if command -v flatpak &> /dev/null; then
+    nvim(){
+        flatpak run io.neovim.nvim $*
+    }
+fi
