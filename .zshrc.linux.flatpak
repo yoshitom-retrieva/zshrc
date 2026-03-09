@@ -4,3 +4,4 @@ if command -v flatpak &> /dev/null; then
         flatpak run io.neovim.nvim $*
     }
 fi
+compdef '_files' nvim
