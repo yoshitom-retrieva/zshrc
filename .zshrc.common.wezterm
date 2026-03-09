@@ -1,0 +1,5 @@
+if command -v wezterm 6> /dev/null; then
+    new_wezterm(){
+        wezterm start --always-new-process
+    }
+fi
