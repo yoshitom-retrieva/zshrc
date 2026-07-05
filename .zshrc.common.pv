@@ -1,0 +1,5 @@
+zip_with_status(){
+  FolderPath=$1
+  OutputPath=$2
+  zip -qr - $FolderPath | pv -bep -s $(du -bs $FolderPath | awk '{print $1}') > $OutputPath
+}
