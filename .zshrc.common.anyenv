@@ -1,4 +1,4 @@
-# Last Change:2019/03/09.
+# Last Change:2024/08/30.
 #
 #
 # install anyenv
@@ -27,5 +27,8 @@
 # git clone https://github.com/yyuu/pyenv-virtualenv ~/.anyenv/envs/pyenv/plugins/pyenv-virtualenv
 # ```
 
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init - zsh)"
+ANYENV_PATH=$HOME/.anyenv/bin
+if [ -e $ANYENV_PATH ];then
+  export PATH="$ANYENV_PATH:$PATH"
+  eval "$(anyenv init - zsh)"
+fi
