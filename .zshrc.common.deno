@@ -1,7 +1,10 @@
 DENO_INSTALL="${HOME}/.deno"
-if [ -z "${DENO_INSTALL:-}" ]; then
+if [ -d "${DENO_INSTALL}" ]; then
   export DENO_INSTALL=$DENO_INSTALL
   export PATH="$DENO_INSTALL/bin:$PATH"
+fi
+DVIM_DIR="${HOME}/.dvm"
+if [ -d "${DVM_DIR}" ]; then
   export DVM_DIR="${HOME}/.dvm"
   export PATH="$DVM_DIR/bin:$PATH"
 fi
